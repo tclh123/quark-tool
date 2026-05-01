@@ -143,7 +143,7 @@ def auth_status(_args: argparse.Namespace) -> int:
         return 1
 
     ok = response.status_code not in (401, 403)
-    print(json.dumps({"ok": ok, "status_code": response.status_code, "session": str(SESSION_PATH)}, ensure_ascii=False))
+    print(json.dumps({"ok": ok, "status_code": response.status_code, "session": str(SESSION_PATH), "list": response.json()}, ensure_ascii=False))
     return 0 if ok else 1
 
 

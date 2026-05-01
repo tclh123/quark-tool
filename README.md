@@ -54,7 +54,7 @@ python3 -m http.server 8080 -d docs
 注意：GitHub Pages 纯前端不能读取夸克返回的 HttpOnly Cookie，也不能绕过浏览器 CORS 或第三方 Cookie 限制。页面支持两种模式：
 
 - 直连模式：不填 API 代理地址。浏览器会直接请求夸克接口，但当前夸克接口没有返回 CORS 许可，通常会失败。
-- 代理模式：填写一个你自己部署的代理地址。仓库提供了 `workers/quark-login-proxy.js`，可部署到 Cloudflare Workers。
+- 代理模式：默认使用 `https://quark-login-api.zwind.app/`。也可以填写一个你自己部署的代理地址。仓库提供了 `workers/quark-login-proxy.js`，可部署到 Cloudflare Workers。
 
 Cloudflare Worker 代理部署要点：
 

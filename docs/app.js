@@ -2,11 +2,12 @@ const QR_TOKEN_URL = "https://uop.quark.cn/cas/ajax/getTokenForQrcodeLogin";
 const QR_TICKET_URL = "https://uop.quark.cn/cas/ajax/getServiceTicketByQrcodeToken";
 const QR_URL_BASE = "https://su.quark.cn/4_eMHBJ";
 const ACCOUNT_INFO_URL = "https://pan.quark.cn/account/info";
+const DEFAULT_API_BASE = "https://quark-login-api.zwind.app/";
 
 const state = {
   token: "",
   qrUrl: "",
-  apiBase: localStorage.getItem("quarkApiBase") || "",
+  apiBase: localStorage.getItem("quarkApiBase") || DEFAULT_API_BASE,
   proxyCookieString: "",
   controller: null,
   polling: false,
