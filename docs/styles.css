@@ -182,10 +182,17 @@ button.ghost {
   position: relative;
 }
 
-#qrCanvas {
+#qrCode {
   width: 240px;
   height: 240px;
   display: none;
+}
+
+#qrCode img,
+#qrCode canvas {
+  width: 240px;
+  height: 240px;
+  display: block;
 }
 
 #qrPlaceholder {

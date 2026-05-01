@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light" />
     <title>夸克扫码登录</title>
     <link rel="stylesheet" href="./styles.css" />
-    <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script defer src="./vendor/qrcode.min.js"></script>
     <script defer src="./app.js"></script>
   </head>
   <body>
@@ -42,7 +42,7 @@
 
         <div class="qr-layout">
           <div class="qr-box">
-            <canvas id="qrCanvas" width="240" height="240" aria-label="夸克扫码登录二维码"></canvas>
+            <div id="qrCode" aria-label="夸克扫码登录二维码"></div>
             <p id="qrPlaceholder">二维码会显示在这里</p>
           </div>
 

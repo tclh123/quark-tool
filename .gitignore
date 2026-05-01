@@ -1,7 +1,10 @@
 __pycache__/
 *.py[cod]
+*.swp
 .venv/
 venv/
+node_modules/
+.DS_Store
 
 references/session_api.json
 references/login_token.json

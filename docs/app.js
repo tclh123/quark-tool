@@ -19,7 +19,7 @@ const els = {
   apiBase: document.querySelector("#apiBase"),
   saveApiBaseBtn: document.querySelector("#saveApiBaseBtn"),
   clearLogBtn: document.querySelector("#clearLogBtn"),
-  qrCanvas: document.querySelector("#qrCanvas"),
+  qrCode: document.querySelector("#qrCode"),
   qrPlaceholder: document.querySelector("#qrPlaceholder"),
   qrUrl: document.querySelector("#qrUrl"),
   ticket: document.querySelector("#ticket"),
@@ -125,17 +125,18 @@ async function quarkApi(kind, params, options = {}) {
 
 async function renderQr(qrUrl) {
   if (!window.QRCode) {
-    throw new Error("二维码渲染库加载失败，请检查 CDN 是否可访问");
+    throw new Error("二维码渲染库加载失败，请检查 docs/vendor/qrcode.min.js 是否存在");
   }
-  await window.QRCode.toCanvas(els.qrCanvas, qrUrl, {
+  els.qrCode.innerHTML = "";
+  new window.QRCode(els.qrCode, {
+    text: qrUrl,
     width: 240,
-    margin: 1,
-    color: {
-      dark: "#191814",
-      light: "#fffdf6",
-    },
+    height: 240,
+    colorDark: "#191814",
+    colorLight: "#fffdf6",
+    correctLevel: window.QRCode.CorrectLevel.M,
   });
-  els.qrCanvas.style.display = "block";
+  els.qrCode.style.display = "block";
   els.qrPlaceholder.style.display = "none";
 }
 

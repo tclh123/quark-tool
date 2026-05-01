@@ -49,6 +49,8 @@ python3 -m http.server 8080 -d docs
 
 访问 `http://localhost:8080` 后点击“生成二维码”。
 
+二维码渲染库已经本地化到 `docs/vendor/qrcode.min.js`，GitHub Pages 不再依赖 jsDelivr。
+
 注意：GitHub Pages 纯前端不能读取夸克返回的 HttpOnly Cookie，也不能绕过浏览器 CORS 或第三方 Cookie 限制。页面支持两种模式：
 
 - 直连模式：不填 API 代理地址。浏览器会直接请求夸克接口，但当前夸克接口没有返回 CORS 许可，通常会失败。
