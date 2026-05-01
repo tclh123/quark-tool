@@ -1,0 +1,272 @@
+:root {
+  --bg: #f3efe4;
+  --ink: #191814;
+  --muted: #6c6556;
+  --line: #d8cdb7;
+  --panel: rgba(255, 252, 242, 0.88);
+  --accent: #0f766e;
+  --accent-strong: #0b4f4a;
+  --warn: #b45309;
+  --ok: #15803d;
+  --shadow: 0 24px 70px rgba(59, 48, 27, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(15, 118, 110, 0.16), transparent 28rem),
+    radial-gradient(circle at 88% 18%, rgba(180, 83, 9, 0.12), transparent 25rem),
+    linear-gradient(135deg, #f7f0dc 0%, var(--bg) 45%, #e7dcc6 100%);
+}
+
+input,
+button,
+textarea {
+  font: inherit;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent-strong);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(42px, 8vw, 92px);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.lede {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.hero-card,
+.panel,
+.notice,
+.log-panel {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--warn);
+  box-shadow: 0 0 0 6px rgba(180, 83, 9, 0.13);
+}
+
+.status-dot.ok {
+  background: var(--ok);
+  box-shadow: 0 0 0 6px rgba(21, 128, 61, 0.13);
+}
+
+.panel,
+.notice,
+.log-panel {
+  padding: 24px;
+  margin-bottom: 18px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.proxy-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  color: white;
+  background: var(--accent);
+  cursor: pointer;
+  transition: transform 160ms ease, opacity 160ms ease, background 160ms ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: var(--accent-strong);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+button.secondary {
+  background: #8a3b12;
+}
+
+button.ghost {
+  padding: 8px 12px;
+  color: var(--accent-strong);
+  background: rgba(15, 118, 110, 0.08);
+}
+
+.qr-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.qr-box {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  border: 1px dashed #b9ad96;
+  border-radius: 22px;
+  background: #fffdf6;
+  position: relative;
+}
+
+#qrCanvas {
+  width: 240px;
+  height: 240px;
+  display: none;
+}
+
+#qrPlaceholder {
+  position: absolute;
+  color: var(--muted);
+}
+
+.details {
+  display: grid;
+  gap: 16px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px;
+  color: var(--ink);
+  background: #fffdf6;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: #fffdf6;
+}
+
+.notice {
+  color: #5a3b11;
+  background: rgba(255, 248, 226, 0.88);
+}
+
+.notice p {
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.log-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+#log {
+  min-height: 180px;
+  max-height: 360px;
+  overflow: auto;
+  margin: 0;
+  padding: 18px;
+  border-radius: 18px;
+  color: #f7f0dc;
+  background: #17140f;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 760px) {
+  .shell {
+    width: min(100% - 22px, 1120px);
+    padding: 28px 0;
+  }
+
+  .hero,
+  .qr-layout,
+  .proxy-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    justify-self: start;
+  }
+}

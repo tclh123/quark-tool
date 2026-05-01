@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>夸克扫码登录</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Quark QR Login</p>
+          <h1>夸克扫码登录</h1>
+          <p class="lede">
+            纯前端版本，适合部署到 GitHub Pages。生成二维码后用夸克 App 扫描并确认。
+          </p>
+        </div>
+        <div class="hero-card">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">待生成二维码</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="proxy-row">
+          <label>
+            API 代理地址（GitHub Pages 部署建议填写）
+            <input id="apiBase" type="url" placeholder="例如 https://quark-login-proxy.example.workers.dev" />
+          </label>
+          <button id="saveApiBaseBtn" type="button" class="secondary">保存代理</button>
+        </div>
+
+        <div class="toolbar">
+          <button id="prepareBtn" type="button">生成二维码</button>
+          <button id="pollBtn" type="button" disabled>开始轮询</button>
+          <button id="stopBtn" type="button" class="secondary" disabled>停止</button>
+        </div>
+
+        <div class="qr-layout">
+          <div class="qr-box">
+            <canvas id="qrCanvas" width="240" height="240" aria-label="夸克扫码登录二维码"></canvas>
+            <p id="qrPlaceholder">二维码会显示在这里</p>
+          </div>
+
+          <div class="details">
+            <label>
+              二维码链接
+              <textarea id="qrUrl" readonly rows="4" placeholder="生成后显示"></textarea>
+            </label>
+            <label>
+              Service Ticket
+              <textarea id="ticket" readonly rows="3" placeholder="扫码确认后显示"></textarea>
+            </label>
+            <label>
+              Cookie String（仅代理模式可导出）
+              <textarea id="cookieString" readonly rows="4" placeholder="登录完成后显示"></textarea>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="notice">
+        <h2>浏览器限制</h2>
+        <p>
+          GitHub Pages 静态页面不能读取夸克返回的 HttpOnly Cookie，也不能控制夸克接口是否允许跨域。
+          如果跨域请求被浏览器拦截，请使用 Python 版本获取可导出的 cookie。
+        </p>
+      </section>
+
+      <section class="log-panel">
+        <div class="log-head">
+          <h2>日志</h2>
+          <button id="clearLogBtn" type="button" class="ghost">清空</button>
+        </div>
+        <pre id="log" aria-live="polite"></pre>
+      </section>
+    </main>
+  </body>
+</html>
