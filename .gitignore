@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+references/session_api.json
+references/login_token.json
+references/qr_code.png
